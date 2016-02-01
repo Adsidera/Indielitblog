@@ -43,6 +43,15 @@
                         <a href="contact.html">Contact</a>
                     </li>
                 </ul>
+                <ul class="nav pull-right">
+                    <li>
+                        <% if user_signed_in? %>
+                            <%= link_to('Logout', destroy_user_session_path, :method => :delete, :class => 'btn-primary') %>
+                        <% else %>
+                            <%= link_to('Login', new_user_session_path, :class => 'btn-success') %>
+                        <% end %>
+                    </li>
+                </ul>
             </div>
             <!-- /.navbar-collapse -->
         </div>
@@ -64,6 +73,8 @@
             </div>
         </div>
     </header>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
 <%= yield %>
     <%= render 'partials/synopsis' %> 
     <%= render 'partials/footer' %> 
